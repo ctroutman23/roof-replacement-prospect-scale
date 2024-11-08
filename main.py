@@ -2,20 +2,20 @@
 import pandas as pd
 
 # Read in real estate data
-real_estate_df = pd.read_csv("data/realtor-data.zip.csv")
+real_estate_df = pd.read_csv("data/marketing_sample_for_trulia_com-trulia_property_data__20200101_20200131__5k_data.csv")
 
-# Take a look at real estate data - It may be best to run one line at a time
-# print(real_estate_df.describe())
-# print(real_estate_df.head())
-# print(real_estate_df.columns)
 
 # Clean real estate data
 
-#Select the rows for the state you want to sell roofs in, personally I'm in KY
-real_estate_df = real_estate_df[real_estate_df["state"] == "Kentucky"]
+  # Replace white space in column names with underscores
+real_estate_df.columns = real_estate_df.columns.str.replace(' ', '_')
+# print(real_estate_df.columns.tolist())    Check to see if it worked
 
-# Take a look at the filtered dataset to make sure it worked
-# print(real_estate_df.head())
+  # Filter dataframe down to relevant columns
+relevant_columns = ['Uniq_Id', 'Address_Full', 'Price', 'Sqr_Ft', 'Year_Built', 'Price_Sqr_Ft',
+                    'Last_Sold_Year']
+real_estate_df = real_estate_df[relevant_columns]
+print(real_estate_df)
 
-# Get the number of rows you're working with
-print(len(real_estate_df)) #Kentucky rows = 26,316
+
+# Write code to generate roofing lead rating (scale of 1-5)
