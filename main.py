@@ -26,12 +26,10 @@ real_estate_df['Sqr_Ft'] = real_estate_df['Sqr_Ft'].str.replace('sqft', '') #rem
 real_estate_df['Sqr_Ft'] = pd.to_numeric(real_estate_df['Sqr_Ft'], errors='coerce') #convert missing values to NaN
 real_estate_df = real_estate_df.dropna(subset=['Sqr_Ft']) #remove NaN values
 real_estate_df['Sqr_Ft'] = real_estate_df['Sqr_Ft'].astype(int) #change data type to int
+real_estate_df = real_estate_df.sort_values(by=['Sqr_Ft'], ascending=False)  #sort Sqr-Ft column in descending order
 
-  # Sort/rank dataframe by Sqr-Ft in descending order
-real_estate_df = real_estate_df.sort_values(by=['Sqr_Ft'], ascending=False)
-print(real_estate_df.Sqr_Ft)
-
-  # Extract relevant data from "Features" column
+  # Extract relevant roofing data from "Features" column
+real_estate_df['Features'] = real_estate_df['Features'].str.split('|')
 
 
 
