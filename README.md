@@ -2,7 +2,12 @@ This project seeks to call, filter, craft, and present real estate & storm data 
 the purposes of roofing marketing. 
 
 I'm seeking out data that will help me identify homeowners who need
-a new roof, using 2 different datasets, real estate and storm data. 
+a new roof, using 2 different datasets.
+
+Both datasets can be found on kaggle and were scraped from Trulia's records.
+<p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
+
+<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
 
 <strong>In real estate data, I'll be looking at the data points below:</strong>
   
