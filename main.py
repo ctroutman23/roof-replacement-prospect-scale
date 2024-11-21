@@ -29,10 +29,18 @@ real_estate_df['Sqr_Ft'] = real_estate_df['Sqr_Ft'].astype(int) #change data typ
 real_estate_df = real_estate_df.sort_values(by=['Sqr_Ft'], ascending=False)  #sort Sqr-Ft column in descending order
 
   # Extract relevant roofing data from "Features" column
-real_estate_df['Features'] = real_estate_df['Features'].str.split('|')
+real_estate_df['Features'] = real_estate_df['Features'].str.split('|') #split each row in the features column on '|'
 
+real_estate_df['Features'] = real_estate_df['Features'].apply(
+  lambda features: next((item.strip() for item in features if 'roof:' in item.lower()), None) #use anonymous func. to transform features column to only include roof info
+)
 
+real_estate_df.rename(columns={'Features': 'Roof_Type'}, inplace=True) #Change the name of the features column to represent the new content                     
+print(real_estate_df['Roof_Type'])
+  
 
+  #Save modified dataframe to csv
+real_estate_df.to_csv('cleaned_data/real_estate_data.csv', index=False) 
 
 # Write code to generate roof replacement prospect score
 # The best prospects are the mostt likely to need a new roof and the most expensive roof 
