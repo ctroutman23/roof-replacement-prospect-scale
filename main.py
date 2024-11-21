@@ -34,6 +34,11 @@ combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].str.replac
 combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].apply(
   lambda x: int(x) if pd.notnull(x) else x) #change data type to int, leace NaN values alone
 
+  #Cleam Price column
+combined_real_estate_df['Price'] =  combined_real_estate_df['Price'].str.replace(',', '') #remove comma
+combined_real_estate_df['Price'] = combined_real_estate_df['Price'].str.replace('$', '') #remove $
+combined_real_estate_df['Price'] = pd.to_numeric(combined_real_estate_df['Price'], errors='coerce') #convert column values to numerical, handling non-convertablem values
+
   # Extract relevant roofing data from "Features" column
 combined_real_estate_df['Features'] = combined_real_estate_df['Features'].str.split('|') #split each row in the features column on '|'
 
