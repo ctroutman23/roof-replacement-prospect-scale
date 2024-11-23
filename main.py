@@ -24,7 +24,7 @@ real_estate_df_2 = real_estate_df_2[relevant_columns]
   # After both datasets are given the same columns, combine the 2 datasets into 1
 combined_real_estate_df = pd.concat([real_estate_df, real_estate_df_2])
 
-  # Filter dataframe to only include homes built in the last 20-30 years
+  # Filter dataframe to only include homes built in the last 20-30 years (ideal timefram for homes needing a new roof)
 combined_real_estate_df = combined_real_estate_df.loc[(combined_real_estate_df.Year_Built >= 1994) & 
 (combined_real_estate_df.Year_Built <= 2004)]
 
@@ -57,9 +57,23 @@ combined_real_estate_df.to_csv('cleaned_combined_data/real_estate_data.csv', ind
 # The best prospects are the mostt likely to need a new roof and the most expensive roof 
 # replacement projects.
 
-#Our propsect score is based on 5 datapoints within our modified dataset:
+#Our propsect score is based on 5 datapoints within our combined & modified dataset:
+
 #1. Price - drawn from latest recorded listing price
+# Initialize new column to hold price score
+combined_real_estate_df['Price_Points'] = 0
+
+# Assign points to the price points column based on the criteria below:
+# 1 point given per $100,000k
+combined_real_estate_df['Price_Points'] = (combined_real_estate_df['Price'] // 100000) * 1
+combined_real_estate_df = combined_real_estate_df.sort_values(by="Price_Points", ascending=False)
+# print(combined_real_estate_df['Price_Points'])
+
+
 #2. Size - drawn from listed square footage of the home
+# Initialize new column to hold size score
+combined_real_estate_df['Size_Points'] = 0
+
 #3. Age - drawn from the date the home was built
 #4. Recent transactions - drawn from date of last sale
 #5. Existing roof type - drawn from listing of roof material
