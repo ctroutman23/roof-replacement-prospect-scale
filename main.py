@@ -49,9 +49,6 @@ combined_real_estate_df['Features'] = combined_real_estate_df['Features'].apply(
 combined_real_estate_df.rename(columns={'Features': 'Roof_Type'}, inplace=True) #Change the name of the features column to represent the new content                     
   
 
-  #Save modified dataframe to csv
-combined_real_estate_df.to_csv('cleaned_combined_data/real_estate_data.csv', index=False) 
-
 
 # Write code to generate roof replacement prospect score
 # The best prospects are the mostt likely to need a new roof and the most expensive roof 
@@ -219,5 +216,8 @@ print(combined_real_estate_df['Final_Prospect_Score'])
 
 #How the point scale works: 
 #The scale is currently heavily weighted toward the biggest most expensive homes
+
+# Write the datset with the added score columns to a csv for visualization purposes.
+combined_real_estate_df.to_csv('cleaned_combined_data/real_estate_data.csv', index=False) 
 
 
