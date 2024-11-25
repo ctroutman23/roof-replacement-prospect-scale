@@ -61,21 +61,21 @@ combined_real_estate_df.to_csv('cleaned_combined_data/real_estate_data.csv', ind
 
 #1. Price - drawn from latest recorded listing price
 # Initialize new column to hold price score
-combined_real_estate_df['Price_Points'] = 0
+combined_real_estate_df['Price_Score'] = 0
 
 # Assign points to the price points column based on the criteria below:
 # 1 point given per $100,000k
-combined_real_estate_df['Price_Points'] = (combined_real_estate_df['Price'] // 100000) * 1
+combined_real_estate_df['Price_Score'] = (combined_real_estate_df['Price'] // 100000) * 1
 # print(combined_real_estate_df['Price_Points'])
 
 
 #2. Size - drawn from listed square footage of the home
 # Initialize new column to hold size score
-combined_real_estate_df['Size_Points'] = 0
+combined_real_estate_df['Size_Score'] = 0
 
 # Assign points to the size points column based on the criteria below:
 # 1 point given per 500 sq ft
-combined_real_estate_df['Size_Points'] = (combined_real_estate_df['Sqr_Ft'] // 500) * 1
+combined_real_estate_df['Size_Score'] = (combined_real_estate_df['Sqr_Ft'] // 500) * 1
 # print(combined_real_estate_df['Size_Points'])
 
 
@@ -167,29 +167,55 @@ def find_roof_type(roof_type):
     print("This does not exist in the Roof_Type column.")
 
 # print(combined_real_estate_df['Roof_Type'])
-asphalt = find_roof_type('asphalt') #Yes
+# asphalt = find_roof_type('asphalt') #Yes
 
-metal = find_roof_type('metal') #Yes
+# metal = find_roof_type('metal') #Yes
 
-slate = find_roof_type('slate') #Yes
+# slate = find_roof_type('slate') #Yes
 
-tile = find_roof_type('tile') #Yes
+# tile = find_roof_type('tile') #Yes
 
-wood = find_roof_type('wood') #No
+# wood = find_roof_type('wood') #No
 
-shake = find_roof_type('shake') #Yes
+# shake = find_roof_type('shake') #Yes
 
-composition = find_roof_type('composition') #Yes
+# composition = find_roof_type('composition') #Yes
 
-laminate = find_roof_type('laminate') #No
+# laminate = find_roof_type('laminate') #No
 
-# Write function to calculate the roof type score based on the criteria below:
+# Write a function to calculate the roof type score based on the criteria below:
 #   -Homes with asphalt or composition roofs gain 50 points
 #   -Homes with metal roofs lose 30 points
 #   -Homes with slate or tile roofs lose 40 points
 #   -Homes with shake (wooden) roofs lose 50 points
 #   -Homes with no stated roof type are unaffected 
 
+def calc_roof_type_score(roof_type):
+    score = 0
+    if roof_type is None:
+        return score  # Handle None or NaN
+    roof_type = roof_type.lower()  # Make case insensitive
+    if 'asphalt' in roof_type or 'composition' in roof_type:
+        score += 50
+    elif 'metal' in roof_type:
+        score -= 30
+    elif 'slate' in roof_type or 'tile' in roof_type:
+        score -= 40
+    elif 'shake' in roof_type:
+        score -= 50
+    return score
+
+# Apply function to 'Roof_Type' column
+combined_real_estate_df['Roof_Type_Score'] = combined_real_estate_df['Roof_Type'].apply(
+  calc_roof_type_score
+)
+# print(combined_real_estate_df['Roof_Type_Score'])
+
+
+# Create the final propsect score column based on the scores in the 5 new columns created
+# from our dataset.
+combined_real_estate_df['Final_Prospect_Score'] = combined_real_estate_df['Price_Score'] + combined_real_estate_df['Size_Score'] + combined_real_estate_df['Age_Score'] + combined_real_estate_df['Recent_Sale_Score'] + combined_real_estate_df['Roof_Type_Score']
+print(combined_real_estate_df['Final_Prospect_Score'])
 
 #How the point scale works: 
 #The scale is currently heavily weighted toward the biggest most expensive homes
