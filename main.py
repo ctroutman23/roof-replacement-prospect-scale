@@ -1,6 +1,9 @@
+####################################
+#         Set Up                   #
+####################################
+
 # Import packages
 import pandas as pd
-import re
 
 # Read in real estate dataset #1
 real_estate_df = pd.read_csv('data/marketing_sample_for_trulia_com-trulia_property_data__20200101_20200131__5k_data.csv')
@@ -8,48 +11,52 @@ real_estate_df = pd.read_csv('data/marketing_sample_for_trulia_com-trulia_proper
 # Read in real estate dataset #2
 real_estate_df_2 = pd.read_csv('data/marketing_sample_for_trulia_com-real_estate__20190901_20191031__30k_data.csv')
 
-# Clean real estate data
 
-  # Replace white space in column names with underscores
+#####################################################
+#          Clean and combine the datasets           #
+#####################################################
+
+# Replace white space in column names with underscores
 real_estate_df.columns = real_estate_df.columns.str.replace(' ', '_')
 
 real_estate_df_2.columns = real_estate_df_2.columns.str.replace(' ', '_')
 
-  # Filter dataframe down to relevant columns
+# Filter dataframe down to relevant columns
 relevant_columns = ['Uniq_Id', 'Address_Full', 'Price', 'Sqr_Ft', 'Price_Sqr_Ft',
                     'Year_Built', 'Last_Sold_Year', 'Features', 'Description']
 real_estate_df = real_estate_df[relevant_columns]
 real_estate_df_2 = real_estate_df_2[relevant_columns]
 
-  # After both datasets are given the same columns, combine the 2 datasets into 1
+# After both datasets are given the same columns, combine the 2 datasets into 1
 combined_real_estate_df = pd.concat([real_estate_df, real_estate_df_2])
 
-  # Filter dataframe to only include homes built in the last 20-30 years (ideal timefram for homes needing a new roof)
+# Filter dataframe to only include homes built in the last 20-30 years (ideal timefram for homes needing a new roof)
 combined_real_estate_df = combined_real_estate_df.loc[(combined_real_estate_df.Year_Built >= 1994) & 
 (combined_real_estate_df.Year_Built <= 2004)]
 
-  # Clean the Sqr_Ft column
+# Clean the Sqr_Ft column to include integer data types
 combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].str.replace(',', '') #remove comma
 combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].str.replace('sqft', '') #remove unit
 combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].apply(
-  lambda x: int(x) if pd.notnull(x) else x) #change data type to int, leace NaN values alone
+  lambda x: int(x) if pd.notnull(x) else x) #change data type to int, leave NaN values alone
 
-  #Cleam Price column
+#Cleam Price column
 combined_real_estate_df['Price'] =  combined_real_estate_df['Price'].str.replace(',', '') #remove comma
 combined_real_estate_df['Price'] = combined_real_estate_df['Price'].str.replace('$', '') #remove $
-combined_real_estate_df['Price'] = pd.to_numeric(combined_real_estate_df['Price'], errors='coerce') #convert column values to numerical, handling non-convertablem values
+combined_real_estate_df['Price'] = pd.to_numeric(combined_real_estate_df['Price'], errors='coerce') #convert column values to numerical, handling non-convertable values
 
-  # Extract relevant roofing data from "Features" column
+# Clean the "Features" column to only include info about the home's roof, if available
 combined_real_estate_df['Features'] = combined_real_estate_df['Features'].str.split('|') #split each row in the features column on '|'
 
 combined_real_estate_df['Features'] = combined_real_estate_df['Features'].apply(
   lambda features: next((item.strip() for item in features if 'roof:' in item.lower()), None)) #use anonymous func. to transform features column to only include roof info
 
+combined_real_estate_df.rename(columns={'Features': 'Roof_Type'}, inplace=True) #Change the name of the features column to represent the new content   
 
-combined_real_estate_df.rename(columns={'Features': 'Roof_Type'}, inplace=True) #Change the name of the features column to represent the new content                     
+unique_roof_types = combined_real_estate_df['Roof_Type'].unique()
+print(unique_roof_types) #check for the roof types listed in the dataset
+
   
-
-
 # Write code to generate roof replacement prospect score
 # The best prospects are the mostt likely to need a new roof and the most expensive roof 
 # replacement projects.
@@ -71,8 +78,8 @@ combined_real_estate_df['Price_Score'] = (combined_real_estate_df['Price'] // 10
 combined_real_estate_df['Size_Score'] = 0
 
 # Assign points to the size points column based on the criteria below:
-# 1 point given per 500 sq ft
-combined_real_estate_df['Size_Score'] = (combined_real_estate_df['Sqr_Ft'] // 500) * 1
+# 1 point given per 2000 sq ft
+combined_real_estate_df['Size_Score'] = (combined_real_estate_df['Sqr_Ft'] // 2000) * 1
 # print(combined_real_estate_df['Size_Points'])
 
 
@@ -139,7 +146,7 @@ combined_real_estate_df['Recent_Sale_Score'] = combined_real_estate_df['Last_Sol
 
 #5. Existing roof type - drawn from listing of roof material
 """
-For our company at least, we mainly replace roofs with asphalt. This is because 
+For our company at least, we mainly replace roofs with asphalt materials. This is because 
 asphalt roofs are the roofs that also need to be replaced the most. We install quality
 asphalt roof systems, but they just don't last as long as more expensive systems like metal
 and slate. 
@@ -155,30 +162,6 @@ of its declared roof system.
 
 # Initialize new column to hold the roof type score
 combined_real_estate_df['Roof_Type_Score'] = 0
-
-# Write function to check for specific roof types in our dataset
-def find_roof_type(roof_type):
-  if combined_real_estate_df['Roof_Type'].str.contains(roof_type, case=False).any():
-    print("This exists in the Roof_Type column.")
-  else:
-    print("This does not exist in the Roof_Type column.")
-
-# print(combined_real_estate_df['Roof_Type'])
-# asphalt = find_roof_type('asphalt') #Yes
-
-# metal = find_roof_type('metal') #Yes
-
-# slate = find_roof_type('slate') #Yes
-
-# tile = find_roof_type('tile') #Yes
-
-# wood = find_roof_type('wood') #No
-
-# shake = find_roof_type('shake') #Yes
-
-# composition = find_roof_type('composition') #Yes
-
-# laminate = find_roof_type('laminate') #No
 
 # Write a function to calculate the roof type score based on the criteria below:
 #   -Homes with asphalt or composition roofs gain 50 points
@@ -212,7 +195,7 @@ combined_real_estate_df['Roof_Type_Score'] = combined_real_estate_df['Roof_Type'
 # Create the final propsect score column based on the scores in the 5 new columns created
 # from our dataset.
 combined_real_estate_df['Final_Prospect_Score'] = combined_real_estate_df['Price_Score'] + combined_real_estate_df['Size_Score'] + combined_real_estate_df['Age_Score'] + combined_real_estate_df['Recent_Sale_Score'] + combined_real_estate_df['Roof_Type_Score']
-print(combined_real_estate_df['Final_Prospect_Score'])
+# print(combined_real_estate_df['Final_Prospect_Score'])
 
 #How the point scale works: 
 #The scale is currently heavily weighted toward the biggest most expensive homes
