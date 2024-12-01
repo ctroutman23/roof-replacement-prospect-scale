@@ -1,101 +1,91 @@
-This project seeks to call, filter, craft, and present real estate & storm data for 
-the purposes of roofing marketing. 
+<h1>Roof Replacement Prospect Scale</h1>
 
-I'm seeking out data that will help me identify homeowners who need
-a new roof, using 2 different datasets.
+<h2>Overview</h2>
+<p>I made this project to help effectively and efficiently identify prospects for roof replacements. Roofing companies can use this program to utilize public real estate data to identify the best homes for concentrating their marketing efforts.</p>
 
-Both datasets can be found on kaggle and were scraped from Trulia's records.
+<p>I've combined 2 similar datasets, cleaned them, and ran them through my program. The program gives each property a score, based on the following criteria:</p>
+  <ul>
+    <li>Price of the home</li>
+    <li>Size of the home</li>
+    <li>Age of the home</li>
+    <li>Most recent sale of the home</li>
+    <li>Known material of the home's roof</li>
+  </ul>
+
+<p>This information is used to compile a score for each home in the dataset. Roofing companies can then focus their marketing and sales efforts on the homes with the highest scores with their strategies of choice - direct mailers, door knocking, etc.</p>
+
+
+<h2>How to run the program</h2>
+
+<h3>Fork the repository</h3>
+
+<p><a href="https://github.com/ctroutman23/roof-replacement-prospect-scale">Repository link</a</p>
+
+<h3>Download the Datasets</h3>
+
+<p>Both datasets can be found on kaggle and were scraped from Trulia's public listings.</p>
 <p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
 
-<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
+<p><a href="https://www.kagIgle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
 
-<strong>In real estate data, I'll be looking at the data points below:</strong>
-  
-    -Age of the Home
-    -Most Recent Listing
-    -Most recent photos of the roof
-    -Square footage of the house
-    -Values of comprable homes in the same market
-
-
-<strong>In the storm data,  I'll be looking at the data points below:</strong>
-
-    -Areas hit by 1 in. of hail or greater in the past 2 years
-    -Areas hit by 60 mph winds or greater in the past 2 years
-
-
-<strong>Connection Between Real Estate & Storm Data</strong>
-
-Together, this data is meant to help roofing companies locate the best potential 
-jobs in the Kentucky/Indiana area. You could use it for marketing purposes in whichever 
-area you select data for.
-
-The real estate data helps us determine the best residential roof jobs in the area, and 
-the storm data tells us which of them are likely to have their roof covered by their home 
-insurance policy. We can identify people who know they need a new roof, and help them uncover 
-the best deal.
-
-
-<h2>Steps to Get Started</h2>
+<p>Once you've downloaded the datasets, store them in a data folder within the forked repository folder on your local machine. Their relative paths should be:</p>
+    <ul>
+        <li>data/marketing_sample_for_trulia_com-trulia_property_data__20200101_20200131__5k_data.csv</li>
+        <li>data/marketing_sample_for_trulia_com-real_estate__20190901_20191031__30k_data.csv</li>
+    </ul>
 
 
 <h3>Set Up Virtual Environment</h3>
 
-<strong>Mac</strong>            <strong>Windows</strong>                  <strong>Linux</strong>
-python3 -m venv venv            
-source venv/bin/activate
-
-When you're not working on your project, you can turn off the virtual environment with
-the <strong>$deactivate</strong> command.
+<h4>Mac</h4>
+<ol>                            
+    <li>python3 -m venv venv</li>            
+    <li>source venv/bin/activate</li>
+    <li>deactivate</li>
+</ol>
+<h4>Windows</h4>  
+<ol>
+    <li>pip install virtualenv</li> 
+    <li>python -m venv venv</li>
+    <li>venv\Scripts\activate</li>
+    <li>deactivate</li>
+</ol>
+<h4>Linux</h4>
+<ol>
+    <li>pip install virtualenv</li>
+    <li>virtualenv virtualenv_name</li>
+    <li>source virtualenv_name/bin/activate</li>
+    <li>deactivate</li>
+</ol>
 
 
 <h3>Install Required Packages</h3>
 
-All packages you need are located in the requirements.txt file. You can simply install them through the command below.
-Make sure you use the pecific commands for your machine. Also, make sure to check and update the versions in the requirements.txt
-file if they are no longer up to date.
+<p>All packages you need are located in the <strong>requirements.txt</strong> file. You can simply install them through the command below:</p>
 
-<strong>Mac</strong>                <strong>Windows</strong>                <strong>Linux</strong>
-pip3 install -r requirements.txt
+<strong>pip or pip3 install -r requirements.txt</strong>
 
-Our required packages include the following:
+<p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <strong>pip</strong> or<strong>pip3 install pandas</strong></p>
 
-<strong>Requests</strong>
-<p>The requests library enables us to easily use HTTP requests(GET, POST, DELETE, etc.). 
-This will be useful in calling our APIs</p>
+<p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data. Using pandas we can set up, clean, and drw the results we want from our data within a single python file.</p>
 
-<strong>Pandas</strong>
-<p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data.</p>
-
-<h3>Set Up API Calls</h3>
-
-In order to get the real estate and storm data, we'll use APIs. There are several APIs that will work. 
-In this case I chose "Postman" for real estate data and "The National Weather Service" for up to date storm data.
-
-You can find links to both APIs below:
-
-<a href="https://www.postman.com/realestateapis" target="_blank">Postman Real Estate APIs<a>
-
-<a href="https://www.weather.gov/documentation/services-web-api" target="_blank">National Weather Service<a>
-
-Check out the <strong>set_up.py</strong> file to see the API calls.
-
-In that file we call and test our APIs to get the data we want.
+<p>As long as you have the datasets downloaded, all you need to do now is run the <strong>main.py</strong> file.</p>
 
 
-<h3>Read in the Datasets</h3>
+<h2>Features</h2>
+
+<ol>
+    <li>Loading Data - This program reads in 2 datasets using <i>pandas.read_csv</i>.</li>
+    <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <i>pd.concat.</i></li>
+    <li>Calculate New Values - This program creates new columns to hold the scores for each property, measuring their rating as a roof replacement lead.</li>
+    <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard.</li>
+    <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
+    <li>Data Interpretation - This program includes clear, detailed comments in the <strong>main.py</strong> file, and a clear explanation of the program results in this README. See below: </li>
+</ol>
 
 
-<h3>Clean the data</h3>
+<h2>Data Interpretation</h2>
 
-
-<h3>Filter for the specific data you want</h3>
-
-
-<h3>Join and Group Data</h3>
-
-
-<h3>Draw Marketing Related Conclusions</h3>
 
 
 
