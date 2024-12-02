@@ -162,7 +162,7 @@ cython_debug/
 #.idea/
 
 # Large Files
-*.csv
+# *.csv
 
 # Mac specific files
 .DS_Store
