@@ -26,7 +26,7 @@
 <p>Both datasets can be found on kaggle and were scraped from Trulia's public listings.</p>
 <p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
 
-<p><a href="https://www.kagIgle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
+<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
 
 <p>Once you've downloaded the datasets, store them in a data folder within the forked repository folder on your local machine. Their relative paths should be:</p>
     <ul>
