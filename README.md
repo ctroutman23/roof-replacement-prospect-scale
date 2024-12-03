@@ -40,7 +40,7 @@
 <h4>Windows</h4>  
 <ol>
     <li><code>pip install virtualenv</code></li> 
-    <li<code>>python -m venv venv</code></li>
+    <li<code>python -m venv venv</code></li>
     <li><code>venv\Scripts\activate</code></li>
     <li><code>deactivate</code></li>
 </ol>
