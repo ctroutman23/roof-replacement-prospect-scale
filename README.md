@@ -33,31 +33,31 @@
 
 <h4>Mac</h4>
 <ol>                            
-    <li>python3 -m venv venv</li>            
-    <li>source venv/bin/activate</li>
-    <li>deactivate</li>
+    <li><code>python3 -m venv venv</code></li>            
+    <li><code>source venv/bin/activate</code></li>
+    <li><code>deactivate</code></li>
 </ol>
 <h4>Windows</h4>  
 <ol>
-    <li>pip install virtualenv</li> 
-    <li>python -m venv venv</li>
-    <li>venv\Scripts\activate</li>
-    <li>deactivate</li>
+    <li><code>pip install virtualenv</code></li> 
+    <li<code>>python -m venv venv</code></li>
+    <li><code>venv\Scripts\activate</code></li>
+    <li><code>deactivate</code></li>
 </ol>
 <h4>Linux</h4>
 <ol>
-    <li>pip install virtualenv</li>
-    <li>virtualenv virtualenv_name</li>
-    <li>source virtualenv_name/bin/activate</li>
-    <li>deactivate</li>
+    <li><code>pip install virtualenv</code></li>
+    <li><code>virtualenv virtualenv_name</code></li>
+    <li><code>source virtualenv_name/bin/activate</code></li>
+    <li><code>deactivate</code></li>
 </ol>
 
 
 <h3>Install Required Packages</h3>
 
-<p>All packages you need are located in the <strong>requirements.txt</strong> file. You can simply install them through the command below:</p>
+<p>All packages you need are located in the <code>requirements.txt</code> file. You can simply install them through the command below:</p>
 
-<strong>pip or pip3 install -r requirements.txt</strong>
+<code>>pip or pip3 install -r requirements.txt</code>
 
 <p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <strong>pip</strong> or<strong>pip3 install pandas</strong></p>
 
@@ -67,19 +67,19 @@
 
 
 <h3>Expected Output</h3>
-<p>When you run the <strong>main.py</strong> file, it will create a new csv file 
+<p>When you run the <code>main.py</code> file, it will create a new csv file 
 within the <code>cleaned_combined_data/</code> folder. This csv holds the scores for each 
 property in our combined dataset.</p>
 
 <h2>Features</h2>
 
 <ol>
-    <li>Loading Data - This program reads in 2 datasets using <i>pandas.read_csv</i>.</li>
+    <li>Loading Data - This program reads in 2 datasets using <code>pandas.read_csv</code>.</li>
     <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <i>pd.concat.</i></li>
     <li>Calculate New Values - This program creates new columns to hold the scores for each property, measuring their rating as a roof replacement lead.</li>
     <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard.</li>
     <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
-    <li>Data Interpretation - This program includes clear, detailed comments in the <strong>main.py</strong> file, and a clear explanation of the program results in this README. See below: </li>
+    <li>Data Interpretation - This program includes clear, detailed comments in the <code>main.py</code> file, and a clear explanation of the program results in this README. See below: </li>
 </ol>
 
 
