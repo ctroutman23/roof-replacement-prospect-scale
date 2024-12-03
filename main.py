@@ -22,8 +22,8 @@ real_estate_df.columns = real_estate_df.columns.str.replace(' ', '_')
 real_estate_df_2.columns = real_estate_df_2.columns.str.replace(' ', '_')
 
 # Filter dataframe down to relevant columns
-relevant_columns = ['Uniq_Id', 'Address_Full', 'Price', 'Sqr_Ft', 'Price_Sqr_Ft',
-                    'Year_Built', 'Last_Sold_Year', 'Features', 'Description']
+relevant_columns = ['Uniq_Id', 'Address_Full', 'Address', 'City', 'State', 'Zipcode', 'Price', 
+                    'Sqr_Ft', 'Price_Sqr_Ft', 'Year_Built', 'Last_Sold_Year', 'Features', 'Description']
 real_estate_df = real_estate_df[relevant_columns]
 real_estate_df_2 = real_estate_df_2[relevant_columns]
 
@@ -33,6 +33,9 @@ combined_real_estate_df = pd.concat([real_estate_df, real_estate_df_2])
 # Filter dataframe to only include homes built in the last 20-30 years (ideal timefram for homes needing a new roof)
 combined_real_estate_df = combined_real_estate_df.loc[(combined_real_estate_df.Year_Built >= 1994) & 
 (combined_real_estate_df.Year_Built <= 2004)]
+
+# Convert zipcode column from float to int
+combined_real_estate_df['Zipcode'] = combined_real_estate_df['Zipcode'].astype(int)
 
 # Clean the Sqr_Ft column to include integer data types
 combined_real_estate_df['Sqr_Ft'] = combined_real_estate_df['Sqr_Ft'].str.replace(',', '') #remove comma
@@ -53,8 +56,7 @@ combined_real_estate_df['Features'] = combined_real_estate_df['Features'].apply(
 
 combined_real_estate_df.rename(columns={'Features': 'Roof_Type'}, inplace=True) #Change the name of the features column to represent the new content   
 
-unique_roof_types = combined_real_estate_df['Roof_Type'].unique()
-print(unique_roof_types) #check for the roof types listed in the dataset
+unique_roof_types = combined_real_estate_df['Roof_Type'].unique() #check for the roof types listed in the dataset
 
   
 # Write code to generate roof replacement prospect score
@@ -70,7 +72,6 @@ combined_real_estate_df['Price_Score'] = 0
 # Assign points to the price points column based on the criteria below:
 # 1 point given per $100,000k
 combined_real_estate_df['Price_Score'] = (combined_real_estate_df['Price'] // 100000) * 1
-# print(combined_real_estate_df['Price_Points'])
 
 
 #2. Size - drawn from listed square footage of the home
@@ -80,7 +81,6 @@ combined_real_estate_df['Size_Score'] = 0
 # Assign points to the size points column based on the criteria below:
 # 1 point given per 2000 sq ft
 combined_real_estate_df['Size_Score'] = (combined_real_estate_df['Sqr_Ft'] // 2000) * 1
-# print(combined_real_estate_df['Size_Points'])
 
 
 #3. Age - drawn from the date the home was built
@@ -100,7 +100,6 @@ def calc_age_points(year_built):
   return score
  
 combined_real_estate_df['Age_Score'] = combined_real_estate_df['Year_Built'].apply(calc_age_points)
-# print(combined_real_estate_df['Age_Score'])
 
 
 #4. Recent Sales - drawn from date of last sale
@@ -141,7 +140,6 @@ def calc_recent_sale_score(Last_Sold_Year):
 combined_real_estate_df['Recent_Sale_Score'] = combined_real_estate_df['Last_Sold_Year'].apply(
   calc_recent_sale_score
 )
-# print(combined_real_estate_df['Recent_Sale_Score'])
 
 
 #5. Existing roof type - drawn from listing of roof material
@@ -189,13 +187,11 @@ def calc_roof_type_score(roof_type):
 combined_real_estate_df['Roof_Type_Score'] = combined_real_estate_df['Roof_Type'].apply(
   calc_roof_type_score
 )
-# print(combined_real_estate_df['Roof_Type_Score'])
 
 
 # Create the final propsect score column based on the scores in the 5 new columns created
 # from our dataset.
 combined_real_estate_df['Final_Prospect_Score'] = combined_real_estate_df['Price_Score'] + combined_real_estate_df['Size_Score'] + combined_real_estate_df['Age_Score'] + combined_real_estate_df['Recent_Sale_Score'] + combined_real_estate_df['Roof_Type_Score']
-# print(combined_real_estate_df['Final_Prospect_Score'])
 
 #How the point scale works: 
 #The scale is currently heavily weighted toward the biggest most expensive homes
