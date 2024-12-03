@@ -12,6 +12,13 @@
     <li>Known material of the home's roof</li>
   </ul>
 
+<h2>The Data</h2>
+
+<p>Both datasets can be found on kaggle and were scraped from Trulia's public listings.</p>
+<p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
+
+<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
+
 <p>This information is used to compile a score for each home in the dataset. Roofing companies can then focus their marketing and sales efforts on the homes with the highest scores with their strategies of choice - direct mailers, door knocking, etc.</p>
 
 
@@ -20,19 +27,6 @@
 <h3>Fork the repository</h3>
 
 <p><a href="https://github.com/ctroutman23/roof-replacement-prospect-scale">Repository link</a</p>
-
-<h3>Download the Datasets</h3>
-
-<p>Both datasets can be found on kaggle and were scraped from Trulia's public listings.</p>
-<p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
-
-<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
-
-<p>Once you've downloaded the datasets, store them in a data folder within the forked repository folder on your local machine. Their relative paths should be:</p>
-    <ul>
-        <li>data/marketing_sample_for_trulia_com-trulia_property_data__20200101_20200131__5k_data.csv</li>
-        <li>data/marketing_sample_for_trulia_com-real_estate__20190901_20191031__30k_data.csv</li>
-    </ul>
 
 
 <h3>Set Up Virtual Environment</h3>
@@ -71,6 +65,11 @@
 
 <p>As long as you have the datasets downloaded, all you need to do now is run the <strong>main.py</strong> file.</p>
 
+
+<h3>Expected Output</h3>
+<p>When you run the <strong>main.py</strong> file, it will create a new csv file 
+within the <code>cleaned_combined_data/</code> folder. This csv holds the scores for each 
+property in our combined dataset.</p>
 
 <h2>Features</h2>
 
