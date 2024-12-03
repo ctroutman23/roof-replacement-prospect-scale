@@ -57,13 +57,13 @@
 
 <p>All packages you need are located in the <code>requirements.txt</code> file. You can simply install them through the command below:</p>
 
-<code>>pip or pip3 install -r requirements.txt</code>
+<code>pip or pip3 install -r requirements.txt</code>
 
-<p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <strong>pip</strong> or<strong>pip3 install pandas</strong></p>
+<p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <code>pip install pandas</code></p>
 
 <p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data. Using pandas we can set up, clean, and drw the results we want from our data within a single python file.</p>
 
-<p>As long as you have the datasets downloaded, all you need to do now is run the <strong>main.py</strong> file.</p>
+<p>As long as you have the datasets downloaded, all you need to do now is run the <code>main.py</code> file.</p>
 
 
 <h3>Expected Output</h3>
@@ -74,8 +74,8 @@ property in our combined dataset.</p>
 <h2>Features</h2>
 
 <ol>
-    <li>Loading Data - This program reads in 2 datasets using <code>pandas.read_csv</code>.</li>
-    <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <i>pd.concat.</i></li>
+    <li>Loading Data - This program reads in 2 datasets using <code>pd.read_csv</code>.</li>
+    <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <code>pd.concat.</code></li>
     <li>Calculate New Values - This program creates new columns to hold the scores for each property, measuring their rating as a roof replacement lead.</li>
     <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard.</li>
     <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
