@@ -24,14 +24,14 @@
 
 <h2>How to run the program</h2>
 
-<h3>Fork the repository</h3>
+<h3>Clone the repository</h3>
 
 <p><a href="https://github.com/ctroutman23/roof-replacement-prospect-scale">Repository link</a</p>
 
 
 <h3>Set Up Virtual Environment</h3>
 
-<h4>Mac</h4>
+<h4>Mac & Linux</h4>
 <ol>                            
     <li><code>python3 -m venv venv</code></li>            
     <li><code>source venv/bin/activate</code></li>
@@ -39,16 +39,8 @@
 </ol>
 <h4>Windows</h4>  
 <ol>
-    <li><code>pip install virtualenv</code></li> 
     <li><code>python -m venv venv</code></li>
     <li><code>venv\Scripts\activate</code></li>
-    <li><code>deactivate</code></li>
-</ol>
-<h4>Linux</h4>
-<ol>
-    <li><code>pip install virtualenv</code></li>
-    <li><code>virtualenv virtualenv_name</code></li>
-    <li><code>source virtualenv_name/bin/activate</code></li>
     <li><code>deactivate</code></li>
 </ol>
 
@@ -57,7 +49,7 @@
 
 <p>All packages you need are located in the <code>requirements.txt</code> file. You can simply install them through the command below:</p>
 
-<code>pip or pip3 install -r requirements.txt</code>
+<code>pip3 install -r requirements.txt</code>
 
 <p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <code>pip install pandas</code></p>
 
