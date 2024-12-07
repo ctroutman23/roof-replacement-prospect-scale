@@ -5,11 +5,11 @@
 
 <p>I've combined 2 similar datasets, cleaned them, and ran them through my program. The program gives each property a score, based on the following criteria:</p>
   <ul>
-    <li>Price of the home - The more expensive the home, the more expensive the roof.</li>
-    <li>Size of the home - Larger homes have larger roof areas</li>
-    <li>Age of the home - The roof age can be determined by the age of the home in many cases.The best roof replacement prospects are homes with asphalt roofs around 30 years old and metal roofs around 50 years old.</li>
-    <li>Most recent sale of the home - Roofs are often replaced before, during, or after the home sales process, so we want to use this datapoint to evaulate each prospect.</li>
-    <li>Known material of the home's roof - If we know what kind of roof the home has, we can determine how long it's expected to last, and therefore when it's like;y due for replacement.</li>
+    <li><strong>Price of the home -</strong> The more expensive the home, the more expensive the roof.</li>
+    <li><strong>Size of the home -</strong> Larger homes have larger roof areas</li>
+    <li><strong>Age of the home -</strong> The roof age can be determined by the age of the home in many cases.The best roof replacement prospects are homes with asphalt roofs around 30 years old and metal roofs around 50 years old.</li>
+    <li><strong>Most recent sale of the home -</strong> Roofs are often replaced before, during, or after the home sales process, so we want to use this datapoint to evaulate each prospect.</li>
+    <li><strong>Known material of the home's roof -</strong> If we know what kind of roof the home has, we can determine how long it's expected to last, and therefore when it's like;y due for replacement.</li>
   </ul>
 
 <h2>The Data</h2>
@@ -67,11 +67,15 @@ property in our combined dataset, making data interpretation and visualization a
 
 <ol>
     <li>Loading Data - This program reads in 2 datasets using <code>pd.read_csv</code>.</li>
-    <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <code>pd.concat.</code></li>
-    <li>Calculate New Values - This program creates new columns to hold the scores for each property, measuring their rating as a roof replacement lead.</li>
-    <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard, which you can access<a href=''>HERE</a</li>
+    <li>Clean & Operate on Data - This program filters both datasets down to the same number of 
+    columns and merges them together using <code>pd.concat.</code></li>
+    <li>Calculate New Values - This program creates new columns to hold the scores for each property, 
+    measuring their rating as a roof replacement lead.</li>
+    <li>Data Visualization - Running this program creates a new csv, which appends our results to 
+    our combined/cleaned datset. This dataset is then used to create a Tableau dashboard, which you can access<a href='https://public.tableau.com/views/RoofReplacementProspectScale/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'> HERE</a</li>
     <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
-    <li>Data Interpretation - This program includes clear, detailed comments in the <code>main.py</code> file, and a clear explanation of the program results in this README. See below: </li>
+    <li>Data Interpretation - This program includes clear, detailed comments in the 
+    <code>main.py</code> file, and a clear explanation of the program results in this README. See below: </li>
 </ol>
 
 
