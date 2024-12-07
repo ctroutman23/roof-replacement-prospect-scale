@@ -5,11 +5,11 @@
 
 <p>I've combined 2 similar datasets, cleaned them, and ran them through my program. The program gives each property a score, based on the following criteria:</p>
   <ul>
-    <li>Price of the home</li>
-    <li>Size of the home</li>
-    <li>Age of the home</li>
-    <li>Most recent sale of the home</li>
-    <li>Known material of the home's roof</li>
+    <li>Price of the home - The more expensive the home, the more expensive the roof.</li>
+    <li>Size of the home - Larger homes have larger roof areas</li>
+    <li>Age of the home - The roof age can be determined by the age of the home in many cases.The best roof replacement prospects are homes with asphalt roofs around 30 years old and metal roofs around 50 years old.</li>
+    <li>Most recent sale of the home - Roofs are often replaced before, during, or after the home sales process, so we want to use this datapoint to evaulate each prospect.</li>
+    <li>Known material of the home's roof - If we know what kind of roof the home has, we can determine how long it's expected to last, and therefore when it's like;y due for replacement.</li>
   </ul>
 
 <h2>The Data</h2>
@@ -53,15 +53,15 @@
 
 <p>Pandas is the only package/library required to run this program. You can also install it by running the following command: <code>pip install pandas</code></p>
 
-<p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data. Using pandas we can set up, clean, and drw the results we want from our data within a single python file.</p>
+<p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data. Using pandas, we can set up, clean, and draw the results we want from our data within a single python file.</p>
 
-<p>As long as you have the datasets downloaded, all you need to do now is run the <code>main.py</code> file.</p>
+<p>Once you've cloned the repository, set up your virtual environment, and installed pandas; then you're ready to run the <code>main.py</code> file on your machine.</p>
 
 
 <h3>Expected Output</h3>
 <p>When you run the <code>main.py</code> file, it will create a new csv file 
 within the <code>cleaned_combined_data/</code> folder. This csv holds the scores for each 
-property in our combined dataset.</p>
+property in our combined dataset, making data interpretation and visualization available for roofing companies.</p>
 
 <h2>Features</h2>
 
@@ -69,13 +69,21 @@ property in our combined dataset.</p>
     <li>Loading Data - This program reads in 2 datasets using <code>pd.read_csv</code>.</li>
     <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <code>pd.concat.</code></li>
     <li>Calculate New Values - This program creates new columns to hold the scores for each property, measuring their rating as a roof replacement lead.</li>
-    <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard.</li>
+    <li>Data Visualization - Running this program creates a new csv, which appends our results to our combined/cleaned datset. This dataset is then used to create a Tableau dashboard, which you can access<a href=''>HERE</a</li>
     <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
     <li>Data Interpretation - This program includes clear, detailed comments in the <code>main.py</code> file, and a clear explanation of the program results in this README. See below: </li>
 </ol>
 
 
 <h2>Data Interpretation</h2>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 
 
 
