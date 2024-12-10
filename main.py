@@ -34,6 +34,10 @@ combined_real_estate_df = pd.concat([real_estate_df, real_estate_df_2])
 combined_real_estate_df = combined_real_estate_df.loc[(combined_real_estate_df['Year_Built'] >= 1974) & 
 (combined_real_estate_df.Year_Built <= 2024)]
 
+# Clean the state column by removing Alaska
+combined_real_estate_df = combined_real_estate_df[
+  combined_real_estate_df['State'].str.upper().fillna('') != 'AK']
+
 # Convert zipcode column from float to int
 combined_real_estate_df['Zipcode'] = pd.to_numeric(combined_real_estate_df['Zipcode'], errors='coerce')
 combined_real_estate_df['Zipcode'] = combined_real_estate_df['Zipcode'].fillna(0).astype(int)
