@@ -15,9 +15,9 @@
 <h2>The Data</h2>
 
 <p>Both datasets can be found on kaggle and were scraped from Trulia's public listings.</p>
-<p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020">Dataset 1</a></p>
+<p><a href="https://www.kaggle.com/datasets/promptcloud/trulia-property-listing-dataset-2020" target="_blank">Dataset 1</a></p>
 
-<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia">Dataset 2</a></p>
+<p><a href="https://www.kaggle.com/datasets/promptcloud/real-estate-data-from-trulia" target="_blank">Dataset 2</a></p>
 
 <p>This information is used to compile a score for each home in the dataset. Roofing companies can then focus their marketing and sales efforts on the homes with the highest scores with their strategies of choice - direct mailers, door knocking, etc.</p>
 
@@ -26,7 +26,7 @@
 
 <h3>Clone the repository</h3>
 
-<p><a href="https://github.com/ctroutman23/roof-replacement-prospect-scale">Repository link</a</p>
+<p><a href="https://github.com/ctroutman23/roof-replacement-prospect-scale" target="_blank">Repository link</a</p>
 
 
 <h3>Set Up Virtual Environment</h3>
@@ -72,7 +72,7 @@ property in our combined dataset, making data interpretation and visualization a
     <li>Calculate New Values - This program creates new columns to hold the scores for each property, 
     measuring their rating as a roof replacement lead.</li>
     <li>Data Visualization - Running this program creates a new csv, which appends our results to 
-    our combined/cleaned datset. This dataset is then used to create a Tableau dashboard, which you can access<a href='https://public.tableau.com/views/RoofReplacementProspectScale/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'> HERE</a</li>
+    our combined/cleaned datset. This dataset is then used to create a Tableau dashboard, which you can access<a href='https://public.tableau.com/views/RoofReplacementProspectScale/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link' target="_blank"> HERE</a</li>
     <li>Best Practices - This program uses a virtual environment. See instructions above.</li>
     <li>Data Interpretation - This program includes clear, detailed comments in the 
     <code>main.py</code> file, and a clear explanation of the program results in this README. See below: </li>
