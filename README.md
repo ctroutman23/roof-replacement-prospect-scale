@@ -55,7 +55,7 @@
 
 <p>Pandas is a python library that allows us to read in, clean, filter, and manipulate data. Using pandas, we can set up, clean, and draw the results we want from our data within a single python file.</p>
 
-<p>Once you've cloned the repository, set up your virtual environment, and installed pandas; then you're ready to run the <code>main.py</code> file on your machine.</p>
+<p>Once you've cloned the repository, set up your virtual environment, and install pandas; then you're ready to run the <code>main.py</code> file on your machine.</p>
 
 
 <h3>Expected Output</h3>
@@ -67,8 +67,7 @@ property in our combined dataset, making data interpretation and visualization a
 
 <ol>
     <li>Loading Data - This program reads in 2 datasets using <code>pd.read_csv</code>.</li>
-    <li>Clean & Operate on Data - This program filters both datasets down to the same number of 
-    columns and merges them together using <code>pd.concat.</code></li>
+    <li>Clean & Operate on Data - This program filters both datasets down to the same number of columns and merges them together using <code>pd.concat</code>.</li>
     <li>Calculate New Values - This program creates new columns to hold the scores for each property, 
     measuring their rating as a roof replacement lead.</li>
     <li>Data Visualization - Running this program creates a new csv, which appends our results to 
