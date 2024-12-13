@@ -80,12 +80,11 @@ property in our combined dataset, making data interpretation and visualization a
 
 <h2>Data Interpretation</h2>
   <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>This program is less about interpreting data and more about utilizing data. Roofing 
+    companies know the kind of prospects they're looking for. This program is about using public data to find them.</li>
+    <li>Roofing companies can use public data, like the trulia data used in this program, to
+    zero in on the properties with the datapoints they're intersted in.</li>
+    <li>Roofing companies can use the criteria in this program, along with geographical data to find the best roof replacement prospects in their service areas.</li>
   </ul>
 
 

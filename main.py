@@ -252,6 +252,6 @@ combined_real_estate_df.to_csv('cleaned_combined_data/real_estate_data.csv', ind
 #       Data Visualization          #
 #####################################
 
-
+#See Tableau dashboard linked in the README
 
 
